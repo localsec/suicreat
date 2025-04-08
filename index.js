@@ -3,17 +3,18 @@ const { generateWallets } = require('./generate');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
+  output: process.stdout
 });
 
-rl.question('Nhập số lượng ví SUI muốn tạo: ', async (answer) => {
-  const total = parseInt(answer);
-  if (isNaN(total) || total <= 0) {
-    console.log('❌ Vui lòng nhập số nguyên dương hợp lệ!');
+rl.question('Nhập số lượng ví SUI cần tạo: ', async (answer) => {
+  const totalWallets = parseInt(answer);
+
+  if (isNaN(totalWallets) || totalWallets <= 0) {
+    console.log('❌ Vui lòng nhập số hợp lệ.');
     rl.close();
     return;
   }
 
-  await generateWallets(total);
+  await generateWallets(totalWallets);
   rl.close();
 });
