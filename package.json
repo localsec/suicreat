@@ -1,0 +1,14 @@
+{
+  "name": "sui-wallet-generator",
+  "version": "1.0.0",
+  "description": "Tool generate SUI wallets in bulk",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "yourusername",
+  "license": "MIT",
+  "dependencies": {
+    "@mysten/sui.js": "^0.38.0"
+  }
+}
