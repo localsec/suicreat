@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { Ed25519Keypair, Mnemonic } = require('@mysten/sui.js/keypairs/ed25519');
+const { Ed25519Keypair } = require('@mysten/sui.js/keypairs/ed25519');
+const { Mnemonic } = require('@mysten/sui.js/cryptography');
 const { OUTPUT_DIR, OUTPUT_FILE } = require('./config');
 
 const generateWallet = async () => {
