@@ -5,8 +5,8 @@ const { Mnemonic } = require('@mysten/sui.js/cryptography');
 const { OUTPUT_DIR, OUTPUT_FILE } = require('./config');
 
 const generateWallet = async () => {
-  const mnemonic = Mnemonic.generate();  // random 12 từ
-  const keypair = Ed25519Keypair.deriveKeypair(mnemonic);  // generate ví từ mnemonic
+  const mnemonic = Mnemonic.generate();
+  const keypair = Ed25519Keypair.deriveKeypair(mnemonic);
   const address = await keypair.getPublicKey().toSuiAddress();
 
   return { address, mnemonic };
@@ -26,7 +26,6 @@ const generateWallets = async (totalWallets) => {
   }
 
   const filePath = path.join(OUTPUT_DIR, OUTPUT_FILE);
-
   const data = wallets.map(w => `${w.address} | ${w.mnemonic}`).join('\n');
   fs.writeFileSync(filePath, data);
 
