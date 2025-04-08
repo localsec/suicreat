@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const { Ed25519Keypair } = require('@mysten/sui.js/cryptography');
+const { Ed25519Keypair, fromB64, toB64 } = require('@mysten/sui.js/keypairs/ed25519');
+const { mnemonicToSeedSync, generateMnemonic } = require('bip39');
+const { deriveKeypair } = require('@mysten/sui.js/cryptography');
 const { OUTPUT_DIR, OUTPUT_FILE } = require('./config');
 
 const generateWallet = async () => {
-  const keypair = Ed25519Keypair.generate();
-  const mnemonic = keypair.export().mnemonic;
+  const mnemonic = generateMnemonic();
+  const keypair = deriveKeypair(mnemonic);  // auto generate keypair từ mnemonic
   const address = await keypair.getPublicKey().toSuiAddress();
   return { address, mnemonic };
 };
